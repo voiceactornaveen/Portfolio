@@ -199,18 +199,16 @@ body.has-menu-open { overflow: hidden; }
     color: rgba(122, 111, 184, 0.55);
 }
 
-/* Reveals — blur removed on mobile via .perf-lite for smoother scroll */
+/* Reveals */
 .fade-in {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(36px);
     filter: blur(4px);
     transition:
-        opacity 0.9s var(--ease-out-expo),
-        transform 0.9s var(--ease-out-expo),
-        filter 0.9s var(--ease-out-expo);
+        opacity 1.2s var(--ease-out-expo),
+        transform 1.2s var(--ease-out-expo),
+        filter 1.2s var(--ease-out-expo);
     transition-delay: var(--reveal-delay, 0ms);
-    content-visibility: auto;
-    contain-intrinsic-size: auto 500px;
 }
 .fade-in.visible {
     opacity: 1;
@@ -437,91 +435,9 @@ body.has-menu-open { overflow: hidden; }
 @keyframes waveIdle { 0%, 100% { height: 6px; } 50% { height: 12px; } }
 @keyframes waveActive { 0%, 100% { height: 4px; } 50% { height: 20px; } }
 .progress-fill {
+    transition: width 0.1s linear;
     background: linear-gradient(90deg, var(--lavender-dim), var(--lavender));
     box-shadow: 0 0 8px rgba(155, 143, 212, 0.35);
-    pointer-events: none;
-    will-change: width;
-}
-.track-row.is-playing .progress-fill,
-.progress-scrubber.is-seeking .progress-fill {
-    transition: none;
-}
-.progress-scrubber {
-    position: relative;
-    height: 0.5rem;
-    min-height: 8px;
-    background: rgba(45, 42, 53, 0.1);
-    border-radius: 9999px;
-    overflow: hidden;
-    cursor: pointer;
-    touch-action: none;
-    -webkit-tap-highlight-color: transparent;
-}
-.progress-scrubber:focus-visible {
-    outline: 2px solid var(--lavender);
-    outline-offset: 2px;
-}
-.track-download {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 9999px;
-    border: 1px solid rgba(155, 143, 212, 0.25);
-    color: var(--ink-muted);
-    background: rgba(255, 255, 255, 0.6);
-    transition: color 0.3s, border-color 0.3s, background 0.3s;
-}
-.track-download:hover {
-    color: var(--ink);
-    border-color: var(--lavender);
-    background: rgba(155, 143, 212, 0.12);
-}
-.track-row.is-playing .time-display,
-.hero-featured-track.is-playing .time-display {
-    font-variant-numeric: tabular-nums;
-    min-width: 4.5rem;
-    text-align: right;
-}
-
-/* Mobile / touch performance */
-.perf-lite .parallax-layer { transform: none !important; }
-.perf-lite .ambient-orb { display: none !important; }
-.perf-lite .fade-in,
-.perf-lite .fade-in.visible { filter: none !important; }
-.perf-lite .grain::before { opacity: 0.02; }
-.perf-lite .animate-float-slow { animation: none !important; }
-.perf-lite .audio-glass,
-.perf-lite .sticky-player,
-.perf-lite #main-nav.nav-scrolled,
-.perf-lite .mobile-nav {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-}
-.perf-lite .audio-glass { background: rgba(255, 255, 255, 0.96); }
-.perf-lite .sample-card:hover { transform: none; box-shadow: none; }
-.perf-lite .track-row,
-.perf-lite .service-card,
-.perf-lite .work-card { transition-duration: 0.2s; }
-
-.hero-secondary-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.75rem 1.5rem;
-    width: 100%;
-    margin-top: -0.125rem;
-}
-.hero-quote-link {
-    margin-top: -0.35rem;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-@media (min-width: 640px) {
-    .hero-secondary-row { gap: 1rem 2rem; margin-top: 0; }
-    .hero-quote-link { margin-top: -0.5rem; }
 }
 
 /* Stats */
@@ -1223,14 +1139,13 @@ Soft-spoken when the role needs it—fully dramatic when the scene turns. 50+ pr
 <svg class="w-5 h-3 opacity-70" viewBox="0 0 20 12" fill="none"><rect x="0" y="4" width="2" height="4" fill="currentColor"/><rect x="4" y="2" width="2" height="8" fill="currentColor"/><rect x="8" y="0" width="2" height="12" fill="currentColor"/><rect x="12" y="3" width="2" height="6" fill="currentColor"/><rect x="16" y="5" width="2" height="2" fill="currentColor"/></svg>
 Listen to Demos
 </a>
-<div class="hero-secondary-row">
-<a class="hero-showreel-link text-[10px] uppercase text-ink-muted hover:text-ink transition-colors group link-magnetic" href="#video-work">
+<a class="hero-showreel-link text-[10px] uppercase text-ink-muted hover:text-ink transition-colors group link-magnetic w-full sm:w-auto" href="#video-work">
 <span class="w-11 h-11 flex-shrink-0 rounded-full border border-primary/25 flex items-center justify-center group-hover:border-primary group-hover:shadow-[0_0_24px_rgba(155,143,212,0.25)] transition-all duration-500 bg-white/50">
 <span class="material-symbols-outlined text-lg ml-0.5">play_arrow</span>
 </span>
 <span class="hero-showreel-label hover-reveal">Watch<br class="sm:hidden"/> Showreel</span>
 </a>
-<a class="hero-quote-link inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-ink-muted hover:text-ink transition-colors hover-reveal" href="#contact">Get a quote</a>
+<a class="inline-flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.25em] text-ink-muted hover:text-ink transition-colors hover-reveal w-full sm:w-auto py-2" href="#contact">Get a quote</a>
 </div>
 </div>
 
@@ -1995,45 +1910,7 @@ WhatsApp +91 89036 31304
     "use strict";
 
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const isMobilePerf = window.matchMedia("(max-width: 1023px), (hover: none) and (pointer: coarse)").matches;
-    if (isMobilePerf || prefersReduced) {
-        document.documentElement.classList.add("perf-lite");
-    }
     const revealSelector = ".fade-in, .fade-in-left, .scale-in";
-
-    // Batched scroll handlers (smoother on mobile)
-    let scrollTicking = false;
-    function onScrollFrame() {
-        scrollTicking = false;
-        if (progressBar) {
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            progressBar.style.width = (docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0) + "%";
-        }
-        if (nav) {
-            nav.classList.toggle("nav-scrolled", window.scrollY > 40);
-        }
-        if (sections.length && navLinks.length) {
-            let current = "";
-            sections.forEach(function (section) {
-                if (window.scrollY >= section.offsetTop - 120) current = section.getAttribute("id");
-            });
-            navLinks.forEach(function (link) {
-                const active = link.getAttribute("href") === "#" + current;
-                link.classList.toggle("active", active);
-                link.classList.toggle("text-ink", active);
-                link.classList.toggle("text-ink-muted", !active);
-            });
-        }
-        if (backToTop) {
-            backToTop.classList.toggle("is-visible", window.scrollY > 600);
-        }
-    }
-    function requestScrollFrame() {
-        if (!scrollTicking) {
-            scrollTicking = true;
-            requestAnimationFrame(onScrollFrame);
-        }
-    }
 
     // Hero: reveal on load
     function revealHero() {
@@ -2062,14 +1939,45 @@ WhatsApp +91 89036 31304
         if (!el.closest("#home")) observer.observe(el);
     });
 
-    // Scroll progress + nav (batched)
+    // Scroll progress
     const progressBar = document.getElementById("scroll-progress");
+    function updateProgress() {
+        if (!progressBar) return;
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + "%";
+    }
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    updateProgress();
+
+    // Nav scroll state
     const nav = document.getElementById("main-nav");
+    function updateNav() {
+        if (window.scrollY > 40) {
+            nav.classList.add("nav-scrolled");
+        } else {
+            nav.classList.remove("nav-scrolled");
+        }
+    }
+    window.addEventListener("scroll", updateNav, { passive: true });
+    updateNav();
+
+    // Active nav link
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-link");
-    const backToTop = document.getElementById("back-to-top");
-    window.addEventListener("scroll", requestScrollFrame, { passive: true });
-    onScrollFrame();
+    function setActiveNav() {
+        let current = "";
+        sections.forEach(function (section) {
+            const top = section.offsetTop - 120;
+            if (window.scrollY >= top) current = section.getAttribute("id");
+        });
+        navLinks.forEach(function (link) {
+            link.classList.toggle("active", link.getAttribute("href") === "#" + current);
+            link.classList.toggle("text-ink", link.classList.contains("active"));
+            link.classList.toggle("text-ink-muted", !link.classList.contains("active"));
+        });
+    }
+    window.addEventListener("scroll", setActiveNav, { passive: true });
 
     // Mobile menu
     const menuToggle = document.getElementById("menu-toggle");
@@ -2106,7 +2014,11 @@ WhatsApp +91 89036 31304
     }
 
     // Back to top
+    const backToTop = document.getElementById("back-to-top");
     if (backToTop) {
+        window.addEventListener("scroll", function () {
+            backToTop.classList.toggle("is-visible", window.scrollY > 600);
+        }, { passive: true });
         backToTop.addEventListener("click", function () {
             window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
         });
@@ -2128,27 +2040,21 @@ WhatsApp +91 89036 31304
         });
     });
 
-    // Scroll parallax — desktop only
-    if (!prefersReduced && !isMobilePerf) {
+    // Scroll parallax
+    if (!prefersReduced) {
         const parallaxEls = document.querySelectorAll(".parallax-layer");
-        let parallaxTicking = false;
         window.addEventListener("scroll", function () {
-            if (parallaxTicking) return;
-            parallaxTicking = true;
-            requestAnimationFrame(function () {
-                const y = window.scrollY;
-                parallaxEls.forEach(function (el) {
-                    const speed = parseFloat(el.dataset.speed || "0.1");
-                    el.style.transform = "translate3d(0, " + y * speed + "px, 0)";
-                });
-                parallaxTicking = false;
+            const y = window.scrollY;
+            parallaxEls.forEach(function (el) {
+                const speed = parseFloat(el.dataset.speed || "0.1");
+                el.style.transform = "translate3d(0, " + y * speed + "px, 0)";
             });
         }, { passive: true });
     }
 
-    // Mic mouse parallax — desktop only
+    // Mic mouse parallax
     const micEl = document.getElementById("mic-parallax");
-    if (micEl && !prefersReduced && !isMobilePerf) {
+    if (micEl && !prefersReduced) {
         let mx = 0, my = 0, tx = 0, ty = 0;
         document.addEventListener("mousemove", function (e) {
             mx = (e.clientX / window.innerWidth - 0.5) * 24;
@@ -2183,47 +2089,25 @@ WhatsApp +91 89036 31304
         statObserver.observe(el);
     });
 
-    // Audio player — single instance, seek, download, smooth progress
+    // Audio player — single instance, all .track-row cards
     const audio = document.getElementById("audio-player");
     const tracks = document.querySelectorAll(".track-row[data-src]");
     let activeRow = null;
-    let isSeeking = false;
-    let progressRaf = null;
 
     function formatTime(sec) {
-        if (!isFinite(sec) || sec < 0) return "0:00";
+        if (!isFinite(sec) || sec < 0) return "--:--";
         const m = Math.floor(sec / 60);
         const s = Math.floor(sec % 60);
         return m + ":" + (s < 10 ? "0" : "") + s;
     }
 
-    function getTrackDuration(row) {
-        if (!row) return 0;
-        const d = parseFloat(row.dataset.duration);
-        if (d && isFinite(d)) return d;
-        if (activeRow === row && audio && audio.duration && isFinite(audio.duration)) return audio.duration;
-        return 0;
-    }
-
-    function updateTimeDisplay(row, current, total) {
-        const timeEl = row && row.querySelector(".time-display");
-        if (!timeEl) return;
-        if (!total || !isFinite(total)) {
-            timeEl.textContent = "--:--";
-            return;
-        }
-        timeEl.textContent = formatTime(current) + " / " + formatTime(total);
-    }
-
     function resetRowUI(row) {
         if (!row) return;
         const fill = row.querySelector(".progress-fill");
+        const timeEl = row.querySelector(".time-display");
         if (fill) fill.style.width = "0%";
-        const total = getTrackDuration(row);
-        updateTimeDisplay(row, 0, total || 0);
-        if (!total) {
-            const timeEl = row.querySelector(".time-display");
-            if (timeEl) timeEl.textContent = "--:--";
+        if (timeEl && row.dataset.duration) {
+            timeEl.textContent = formatTime(parseFloat(row.dataset.duration));
         }
     }
 
@@ -2268,9 +2152,7 @@ WhatsApp +91 89036 31304
             const icon = row.querySelector(".play-icon");
             if (icon) icon.textContent = "pause";
             activeRow = row;
-            startProgressLoop();
         } else {
-            stopProgressLoop();
             if (activeRow) resetRowUI(activeRow);
             activeRow = null;
         }
@@ -2278,119 +2160,12 @@ WhatsApp +91 89036 31304
     }
 
     function updateActiveProgress() {
-        if (!activeRow || !audio || !audio.duration || !isFinite(audio.duration)) return;
-        const pct = Math.min(100, Math.max(0, (audio.currentTime / audio.duration) * 100));
+        if (!activeRow || !audio || !audio.duration) return;
+        const pct = (audio.currentTime / audio.duration) * 100;
         const fill = activeRow.querySelector(".progress-fill");
+        const timeEl = activeRow.querySelector(".time-display");
         if (fill) fill.style.width = pct + "%";
-        updateTimeDisplay(activeRow, audio.currentTime, audio.duration);
-    }
-
-    function startProgressLoop() {
-        stopProgressLoop();
-        function tick() {
-            if (!isSeeking && activeRow && audio && !audio.paused) {
-                updateActiveProgress();
-            }
-            progressRaf = requestAnimationFrame(tick);
-        }
-        progressRaf = requestAnimationFrame(tick);
-    }
-
-    function stopProgressLoop() {
-        if (progressRaf) {
-            cancelAnimationFrame(progressRaf);
-            progressRaf = null;
-        }
-    }
-
-    function seekFromScrubber(scrubber, clientX) {
-        if (!audio || !audio.duration || !isFinite(audio.duration)) return;
-        const rect = scrubber.getBoundingClientRect();
-        const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
-        audio.currentTime = ratio * audio.duration;
-        updateActiveProgress();
-    }
-
-    function enhanceTrackRow(row) {
-        const src = row.dataset.src;
-        if (!src) return;
-
-        var barWrap = row.querySelector(".progress-scrubber");
-        if (!barWrap) {
-            var oldBar = row.querySelector(".mt-2");
-            if (oldBar) {
-                oldBar.classList.add("progress-scrubber", "mt-2", "rounded-full");
-                oldBar.classList.remove("h-px");
-                oldBar.setAttribute("role", "slider");
-                oldBar.setAttribute("aria-label", "Seek audio");
-                oldBar.setAttribute("aria-valuemin", "0");
-                oldBar.setAttribute("aria-valuemax", "100");
-                oldBar.setAttribute("tabindex", "0");
-                var fill = oldBar.querySelector(".progress-fill");
-                if (fill) fill.classList.add("rounded-full");
-                barWrap = oldBar;
-            }
-        }
-
-        if (barWrap && !barWrap.dataset.seekBound) {
-            barWrap.dataset.seekBound = "1";
-            function onSeekStart(e) {
-                e.stopPropagation();
-                if (activeRow !== row) {
-                    toggleTrack(row);
-                    return;
-                }
-                isSeeking = true;
-                barWrap.classList.add("is-seeking");
-                var x = e.touches ? e.touches[0].clientX : e.clientX;
-                seekFromScrubber(barWrap, x);
-            }
-            function onSeekMove(e) {
-                if (!isSeeking || activeRow !== row) return;
-                e.preventDefault();
-                var x = e.touches ? e.touches[0].clientX : e.clientX;
-                seekFromScrubber(barWrap, x);
-            }
-            function onSeekEnd() {
-                isSeeking = false;
-                barWrap.classList.remove("is-seeking");
-            }
-            barWrap.addEventListener("mousedown", onSeekStart);
-            barWrap.addEventListener("touchstart", onSeekStart, { passive: true });
-            window.addEventListener("mousemove", onSeekMove);
-            window.addEventListener("touchmove", onSeekMove, { passive: false });
-            window.addEventListener("mouseup", onSeekEnd);
-            window.addEventListener("touchend", onSeekEnd);
-            barWrap.addEventListener("keydown", function (e) {
-                if (activeRow !== row || !audio.duration) return;
-                if (e.key === "ArrowRight") {
-                    e.preventDefault();
-                    audio.currentTime = Math.min(audio.duration, audio.currentTime + 5);
-                    updateActiveProgress();
-                } else if (e.key === "ArrowLeft") {
-                    e.preventDefault();
-                    audio.currentTime = Math.max(0, audio.currentTime - 5);
-                    updateActiveProgress();
-                }
-            });
-        }
-
-        if (!row.querySelector(".track-download")) {
-            var fileName = (row.dataset.title || "voice-sample").replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "-") + ".mp3";
-            var dl = document.createElement("a");
-            dl.className = "track-download";
-            dl.href = src;
-            dl.download = fileName;
-            dl.setAttribute("aria-label", "Download " + (row.dataset.title || "sample"));
-            dl.innerHTML = '<span class="material-symbols-outlined text-lg">download</span>';
-            dl.addEventListener("click", function (e) { e.stopPropagation(); });
-            var timeEl = row.querySelector(".time-display");
-            if (timeEl && timeEl.parentNode) {
-                timeEl.parentNode.insertBefore(dl, timeEl);
-            } else {
-                row.appendChild(dl);
-            }
-        }
+        if (timeEl) timeEl.textContent = formatTime(audio.currentTime);
     }
 
     function preloadTrackDuration(row) {
@@ -2402,8 +2177,9 @@ WhatsApp +91 89036 31304
         probe.addEventListener("loadedmetadata", function () {
             if (probe.duration && isFinite(probe.duration)) {
                 row.dataset.duration = String(probe.duration);
-                if (activeRow !== row) {
-                    updateTimeDisplay(row, 0, probe.duration);
+                const timeEl = row.querySelector(".time-display");
+                if (timeEl && activeRow !== row) {
+                    timeEl.textContent = formatTime(probe.duration);
                 }
             }
         });
@@ -2413,10 +2189,7 @@ WhatsApp +91 89036 31304
         });
     }
 
-    tracks.forEach(function (row) {
-        enhanceTrackRow(row);
-        preloadTrackDuration(row);
-    });
+    tracks.forEach(preloadTrackDuration);
 
     function toggleTrack(row) {
         const src = row.dataset.src;
@@ -2439,7 +2212,6 @@ WhatsApp +91 89036 31304
         audio.play().then(function () {
             setPlayingUI(row, true);
             trackDemoPlay(row.dataset.title);
-            updateActiveProgress();
         }).catch(function () {
             setPlayingUI(null, false);
         });
@@ -2447,12 +2219,11 @@ WhatsApp +91 89036 31304
 
     tracks.forEach(function (row) {
         row.addEventListener("click", function (e) {
-            if (e.target.closest(".play-btn") || e.target.closest(".track-download") || e.target.closest(".progress-scrubber")) return;
+            if (e.target.closest(".play-btn")) e.preventDefault();
             toggleTrack(row);
         });
         row.addEventListener("keydown", function (e) {
             if (e.key === "Enter" || e.key === " ") {
-                if (e.target.closest(".progress-scrubber") || e.target.closest(".track-download")) return;
                 e.preventDefault();
                 toggleTrack(row);
             }
@@ -2460,8 +2231,9 @@ WhatsApp +91 89036 31304
     });
 
     if (audio) {
+        audio.addEventListener("timeupdate", updateActiveProgress);
         audio.addEventListener("loadedmetadata", function () {
-            if (activeRow && audio.duration && isFinite(audio.duration)) {
+            if (activeRow) {
                 activeRow.dataset.duration = String(audio.duration);
                 updateActiveProgress();
             }
@@ -2471,23 +2243,15 @@ WhatsApp +91 89036 31304
         });
         audio.addEventListener("pause", function () {
             if (audio.ended) return;
-            stopProgressLoop();
             if (activeRow) {
                 const icon = activeRow.querySelector(".play-icon");
                 if (icon) icon.textContent = "play_arrow";
                 activeRow.classList.remove("is-playing");
-                updateActiveProgress();
             }
             updateStickyPlayer();
         });
         audio.addEventListener("play", function () {
-            if (activeRow) {
-                activeRow.classList.add("is-playing");
-                const icon = activeRow.querySelector(".play-icon");
-                if (icon) icon.textContent = "pause";
-                startProgressLoop();
-            }
-            updateStickyPlayer();
+            if (activeRow) updateStickyPlayer();
         });
     }
 
