@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="micBody" x1="200" y1="80" x2="200" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4a4458"/>
+      <stop offset="1" stop-color="#2d2a35"/>
+    </linearGradient>
+    <linearGradient id="micGrille" x1="200" y1="100" x2="200" y2="280" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9b8fd4" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#7a6fb8" stop-opacity="0.15"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <ellipse cx="200" cy="460" rx="120" ry="18" fill="#9b8fd4" opacity="0.2"/>
+  <rect x="178" y="360" width="44" height="100" rx="8" fill="#3d3848"/>
+  <path d="M120 420h160v24c0 22-36 40-80 40s-80-18-80-40v-24z" fill="#5c5768"/>
+  <rect x="155" y="300" width="90" height="70" rx="12" fill="url(#micBody)" filter="url(#glow)"/>
+  <ellipse cx="200" cy="190" rx="72" ry="95" fill="url(#micBody)"/>
+  <ellipse cx="200" cy="190" rx="58" ry="78" fill="url(#micGrille)"/>
+  <ellipse cx="200" cy="190" rx="42" ry="56" stroke="#9b8fd4" stroke-width="1.5" opacity="0.45"/>
+  <path d="M200 95v30M168 110l32 15M232 110l-32 15" stroke="#9b8fd4" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+  <path d="M200 55 L215 85 L185 85 Z" fill="#e8958a" opacity="0.85"/>
+  <circle cx="200" cy="52" r="6" fill="#9b8fd4"/>
+</svg>

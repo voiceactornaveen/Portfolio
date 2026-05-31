@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://naveenkumar-livid.vercel.app/sitemap.xml
